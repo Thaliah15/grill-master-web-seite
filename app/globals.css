@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 255 255 255;
+  --fg: 17 24 39;
+  --muted: 107 114 128;
+  --border: 229 231 235;
+  --card: 255 255 255;
+}
+
+html, body { height: 100%; }
+body { @apply bg-white text-gray-900 antialiased; }
+
+
+.shadow-soft{box-shadow:0 10px 30px rgba(0,0,0,.08)}

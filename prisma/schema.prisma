@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  sortOrder Int       @default(0)
+  products  Product[]
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  imageUrl    String?
+  priceCents  Int
+  isActive    Boolean  @default(true)
+  categoryId  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  category    Category? @relation(fields: [categoryId], references: [id])
+
+  optionGroups ProductOptionGroup[]
+
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  status        String   @default("PENDING")
+  paymentMethod String
+  paymentStatus String   @default("UNPAID")
+
+  fulfillmentMethod String @default("DELIVERY")
+  deliveryFeeCents  Int    @default(0)
+
+  customerName  String
+  phone         String
+  address       String
+  notes         String?
+
+  subtotalCents Int
+  taxCents      Int
+  totalCents    Int
+  currency      String      @default("EUR")
+
+  stripeSessionId String?   @unique
+  stripePaymentIntentId String?
+
+  items         OrderItem[]
+}
+
+model OrderItem {
+  id          String  @id @default(cuid())
+  orderId     String
+  productId   String
+  quantity    Int
+  unitPriceCents Int
+  extraPriceCents Int @default(0)
+  selectedOptionsJson String? // JSON array of {groupId, itemIds}
+  lineTotalCents Int
+  nameSnapshot String
+
+  order       Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product     Product @relation(fields: [productId], references: [id])
+}
+
+model Settings {
+  id              String  @id @default("main")
+  openTime        String  @default("11:00")
+  closeTime       String  @default("22:00")
+  minOrderCents   Int     @default(1500)
+  deliveryFeeCents Int    @default(300)
+  enablePickup    Boolean @default(true)
+  enableDelivery  Boolean @default(true)
+  notifyEmailTo   String?
+  notifyEmailFrom String?
+  whatsappTo      String?
+  whatsappEnabled Boolean @default(false)
+}
+
+model OptionGroup {
+  id          String   @id @default(cuid())
+  name        String
+  type        String   @default("MULTIPLE") // MULTIPLE or SINGLE
+  required    Boolean  @default(false)
+  maxSelect   Int      @default(0) // 0 = unlimited (for MULTIPLE)
+  sortOrder   Int      @default(0)
+  products    ProductOptionGroup[]
+  items       OptionItem[]
+}
+
+model OptionItem {
+  id          String   @id @default(cuid())
+  groupId     String
+  group       OptionGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  name        String
+  priceCents  Int      @default(0)
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+}
+
+model ProductOptionGroup {
+  productId   String
+  groupId     String
+  product     Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  group       OptionGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@id([productId, groupId])
+}
