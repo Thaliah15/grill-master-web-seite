@@ -1,11 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useToast } from "@/components/ToastProvider";
+import { useToast } from "/components/ToastProvider";
 import Link from "next/link";
-import { addToCart } from "@/lib/cartStorage";
-import { formatMoney } from "@/lib/money";
-import { Button, Badge } from "@/components/ui";
+import { addToCart } from "/lib/cartStorage";
+import { formatMoney } from "/lib/money";
+import { Button, Badge } from "/components/ui";
 
 function buildGroups(product) {
   return (product.optionGroups || [])

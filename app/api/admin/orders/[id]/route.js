@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "/lib/prisma";
 import { assertAdmin } from "../../_auth";
 
 export async function GET(req, { params }) {

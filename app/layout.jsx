@@ -1,9 +1,9 @@
 import "./globals.css";
-import CookieBanner from "@/components/CookieBanner";
-import { ToastProvider } from "@/components/ToastProvider";
+import CookieBanner from "../components/CookieBanner";
+import { ToastProvider } from "../components/ToastProvider";
 import Link from "next/link";
-import { Container } from "@/components/ui";
-import LastOrderNavButton from "@/components/LastOrderNavButton";
+import { Container } from "../components/ui";
+import LastOrderNavButton from "../components/LastOrderNavButton";
 
 export const metadata = {
   title: process.env.NEXT_PUBLIC_APP_NAME || "Restaurant",

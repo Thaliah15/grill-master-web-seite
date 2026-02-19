@@ -1,7 +1,7 @@
-import { prisma } from "@/lib/prisma";
-import { formatMoney } from "@/lib/money";
-import { Button, Card, CardBody, Badge } from "@/components/ui";
-import LastOrderHeroButton from "@/components/LastOrderHeroButton";
+import { prisma } from "../lib/prisma";
+import { formatMoney } from "../lib/money";
+import { Button, Card, CardBody, Badge } from "../components/ui";
+import LastOrderHeroButton from "/components/LastOrderHeroButton";
 export default async function Home() {
   const products = await prisma.product.findMany({
     where: { isActive: true },

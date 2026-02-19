@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { loadCart, updateQty, clearCart } from "@/lib/cartStorage";
-import { calcTotals, formatMoney } from "@/lib/money";
-import { Button, Input } from "@/components/ui";
+import { loadCart, updateQty, clearCart } from "/lib/cartStorage";
+import { calcTotals, formatMoney } from "/lib/money";
+import { Button, Input } from "/components/ui";
 
 export default function CartPage() {
   const [items, setItems] = useState([]);

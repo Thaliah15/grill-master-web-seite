@@ -1,49 +1,54 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui";
-
-const KEY = "cookie_consent_v1";
 
 export default function CookieBanner() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     try {
-      const v = localStorage.getItem(KEY);
-      if (!v) setShow(true);
-    } catch {
-      // ignore
-    }
+      const ok = localStorage.getItem("cookie_ok");
+      if (!ok) setShow(true);
+    } catch {}
   }, []);
-
-  function accept() {
-    localStorage.setItem(KEY, "accepted");
-    setShow(false);
-  }
-
-  function decline() {
-    localStorage.setItem(KEY, "declined");
-    setShow(false);
-  }
 
   if (!show) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 p-4">
-      <div className="mx-auto max-w-3xl rounded-3xl border border-gray-200 bg-white p-4 shadow-soft">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-sm text-gray-700">
-            Wir verwenden nur technisch notwendige Cookies/LocalStorage (z. B. Warenkorb & Einwilligung). Mehr Infos in{" "}
-            <Link className="font-semibold underline" href="/datenschutz">Datenschutz</Link>.
-          </div>
-          <div className="flex gap-2">
-            <Button variant="secondary" onClick={decline}>Ablehnen</Button>
-            <Button onClick={accept}>Akzeptieren</Button>
-          </div>
-        </div>
+    <div style={{
+      position: "fixed",
+      bottom: 16,
+      left: 16,
+      right: 16,
+      zIndex: 50,
+      background: "white",
+      border: "1px solid #e5e5e5",
+      borderRadius: 16,
+      padding: 14,
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      gap: 12
+    }}>
+      <div style={{ fontSize: 14, color: "#111" }}>
+        Wir verwenden Cookies, um die Website zu verbessern.
       </div>
+      <button
+        onClick={() => {
+          try { localStorage.setItem("cookie_ok", "1"); } catch {}
+          setShow(false);
+        }}
+        style={{
+          background: "#111",
+          color: "white",
+          padding: "10px 14px",
+          borderRadius: 12,
+          fontWeight: "700",
+          border: "none"
+        }}
+      >
+        OK
+      </button>
     </div>
   );
 }

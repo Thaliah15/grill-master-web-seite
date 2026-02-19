@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { formatMoney } from "@/lib/money";
-import { Button, Card, CardBody, Badge } from "@/components/ui";
+import { formatMoney } from "/lib/money";
+import { Button, Card, CardBody, Badge } from "/components/ui";
 
 export default function MenuClient({ categories }) {
   const symbol = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || "€";

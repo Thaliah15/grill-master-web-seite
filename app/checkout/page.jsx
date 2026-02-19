@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { loadCart, clearCart } from "@/lib/cartStorage";
+import { loadCart, clearCart } from "/lib/cartStorage";
 import Link from "next/link";
-import { Button, Input, Textarea, Badge } from "@/components/ui";
-import { formatMoney } from "@/lib/money";
+import { Button, Input, Textarea, Badge } from "/components/ui";
+import { formatMoney } from "/lib/money";
 
 export default function CheckoutPage() {
   const [items, setItems] = useState([]);

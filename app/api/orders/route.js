@@ -1,7 +1,7 @@
-import { prisma } from "@/lib/prisma";
-import { sendOrderEmail } from "@/lib/notify";
-import { calcTotals } from "@/lib/money";
-import { isOpenNow } from "@/lib/settings";
+import { prisma } from "/lib/prisma";
+import { sendOrderEmail } from "/lib/notify";
+import { calcTotals } from "/lib/money";
+import { isOpenNow } from "/lib/settings";
 import { z } from "zod";
 import Stripe from "stripe";
 

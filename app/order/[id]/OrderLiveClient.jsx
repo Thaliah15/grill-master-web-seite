@@ -2,8 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { Badge, Button } from "@/components/ui";
-import { formatMoney } from "@/lib/money";
+import { Badge, Button } from "/components/ui";
+import { formatMoney } from "/lib/money";
 
 const TERMINAL = new Set(["DELIVERED", "CANCELED"]);
 

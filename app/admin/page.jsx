@@ -2,8 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { Button, Input, Textarea, Badge } from "@/components/ui";
-import { formatMoney } from "@/lib/money";
+import { Button, Input, Textarea, Badge } from "/components/ui";
+import { formatMoney } from "/lib/money";
 
 function toCents(eurString) {
   const s = String(eurString ?? "").replace(",", ".").trim();

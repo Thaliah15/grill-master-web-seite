@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "/lib/prisma";
 import PrintClient from "./print-client";
 
 export const dynamic = "force-dynamic";

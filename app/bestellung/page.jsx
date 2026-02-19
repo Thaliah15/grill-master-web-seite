@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui";
+import { Button } from "/components/ui";
 
 export default function BestellungPage() {
   const router = useRouter();

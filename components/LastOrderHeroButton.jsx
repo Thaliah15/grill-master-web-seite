@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link"; 
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui";
 
 export default function LastOrderHeroButton() {
   const [id, setId] = useState("");

@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "/lib/prisma";
 import { sendOrderEmail } from "@/lib/notify";
 import { calcTotals } from "@/lib/money";
 

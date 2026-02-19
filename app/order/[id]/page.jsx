@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/prisma";
-import { formatMoney } from "@/lib/money";
+import { prisma } from "/lib/prisma";
+import { formatMoney } from "/lib/money";
 import OrderLiveClient from "./OrderLiveClient";
 
 export const dynamic = "force-dynamic";
