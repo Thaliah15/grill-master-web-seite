@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui";
+import { Button } from "/components/ui";
 
 export default function SuccessPage({ searchParams }) {
   const sid = searchParams?.session_id;

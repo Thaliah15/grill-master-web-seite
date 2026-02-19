@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { Button, Badge } from "@/components/ui";
+import { Button, Badge } from "/components/ui";
 
 function formatDateTime(d) {
   if (!d) return "-";
