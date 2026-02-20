@@ -1,10 +1,18 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { Suspense, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 
 export default function SuccessPage() {
+  return (
+    <Suspense fallback={<div />}>
+      <SuccessInner />
+    </Suspense>
+  );
+}
+
+function SuccessInner() {
   const sp = useSearchParams();
   const router = useRouter();
 
@@ -21,7 +29,9 @@ export default function SuccessPage() {
       <div className="mx-auto max-w-xl space-y-3 rounded-3xl border border-gray-200 bg-white p-6 shadow-soft">
         <h1 className="text-2xl font-extrabold">Erfolg</h1>
         <p className="text-sm text-gray-600">Keine Bestellnummer gefunden.</p>
-        <Link className="underline font-semibold" href="/menu">Zur Speisekarte</Link>
+        <Link className="underline font-semibold" href="/menu">
+          Zur Speisekarte
+        </Link>
       </div>
     );
   }
@@ -30,7 +40,8 @@ export default function SuccessPage() {
     <div className="mx-auto max-w-xl space-y-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-soft">
       <h1 className="text-2xl font-extrabold">✅ Bestellung erfolgreich</h1>
       <p className="text-sm text-gray-700">
-        Deine Bestellnummer: <span className="font-bold">{orderId.slice(-6)}</span>
+        Deine Bestellnummer:{" "}
+        <span className="font-bold">{orderId.slice(-6)}</span>
       </p>
 
       <div className="flex flex-wrap gap-2">
