@@ -6,12 +6,12 @@ import { Container } from "../components/ui";
 import LastOrderNavButton from "../components/LastOrderNavButton";
 
 export const metadata = {
-  title: process.env.NEXT_PUBLIC_APP_NAME || "Restaurant",
+  title: process.env.NEXT_PUBLIC_APP_NAME || "Grill Master",
   description: "Online-Bestellung",
 };
 
 export default function RootLayout({ children }) {
-  const name = process.env.NEXT_PUBLIC_APP_NAME || "Restaurant";
+  const name = process.env.NEXT_PUBLIC_APP_NAME || "Grill Master";
   return (
     <html lang="de">
       <body>
